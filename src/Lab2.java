@@ -7,7 +7,7 @@
 
 import java.util.Random;
 import java.util.Scanner;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 public class Lab2 {
     public static void main(String[] args) {
@@ -28,7 +28,7 @@ class Game {
         Objects MyObjects = new Objects(); // initialize objects Cards, decks, etc...
         MyObjects.initialize();
 
-        MyObjects.parameters(Menu.sub1Menu()); // call sub1Menu which gives players the options for game setup returns array of chars for setup values
+        Menu.sub1Menu(MyObjects); // call sub1Menu which gives players the options for game setup returns array of chars for setup values
 
     }
 
@@ -95,12 +95,16 @@ class Menu {
     //     return MyObjects;
     // }
 
-    public void sub1Menu(Objects MyObjects){
+    static public void sub1Menu(Objects MyObjects){
 
-        System.out.println("ordered deck")
+        System.out.printf("%n%s%n%n","Ordered deck:");
+        
         MyObjects.printDeck(MyObjects.deck);
-        System.out.println("shuffleddeck");
-        MyObjects.shuffleDeck(MyObjects.deck);
+        System.out.printf("%n%s%n%n","Shuffled deck:");
+
+        MyObjects.deck = MyObjects.shuffleDeck(MyObjects.deck);
+
+        MyObjects.printDeck(MyObjects.deck);
         
 
         
@@ -112,12 +116,12 @@ class Menu {
 
 class Objects {
 
-    // class Card {
-    //     String face;
-    //     String suit;
-    //     int faceInt;
-    //     int suitInt;
-    // }
+    class Card {
+        String face;
+        String suit;
+        int faceInt;
+        int suitInt;
+    }
 
     // class Parameters {
     //     int players;
